@@ -42,10 +42,6 @@ public class UsuarioController {
 	@GetMapping("{username}")
 	public ResponseEntity<?> ObtenerUsuarioUsername(@PathVariable String username) {
 		Map<String, Object> response = new HashMap<>();
-		if (username == null || username.isBlank()) {
-			response.put("mensaje", "Enviar el parametro de busqueda");
-			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-		}
 		try {
 			Usuario user = usuarioService.FindByUsername(username);
 
