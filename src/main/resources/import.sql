@@ -1,1 +1,1 @@
-insert into usuario(nombre, password, username) values('Christian','chris', 'chrisadr');
+insert into usuario(nombre, password, username) values('Christian Marcatoma','chris', 'chrisadr');
