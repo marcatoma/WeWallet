@@ -40,6 +40,10 @@ public class Transaccion implements Serializable {
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "cuenta_bancaria_id")
+	private CuentaBancaria cuentaBancaria;
+
 	private static final long serialVersionUID = 1L;
 
 }
