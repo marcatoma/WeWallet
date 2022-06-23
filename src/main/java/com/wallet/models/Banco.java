@@ -18,7 +18,7 @@ public class Banco implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "institucion")
+	@Column(name = "institucion", unique = true)
 	@NotBlank
 	private String institucion;
 	
