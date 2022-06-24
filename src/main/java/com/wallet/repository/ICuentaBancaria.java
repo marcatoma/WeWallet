@@ -7,4 +7,6 @@ import com.wallet.models.CuentaBancaria;
 @Repository
 public interface ICuentaBancaria extends JpaRepository<CuentaBancaria, Long>{
 	
+	
+	
 }
