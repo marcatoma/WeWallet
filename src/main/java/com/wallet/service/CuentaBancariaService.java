@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wallet.models.CuentaBancaria;
-import com.wallet.models.Usuario;
 import com.wallet.repository.ICuentaBancaria;
 
 @Service
 public class CuentaBancariaService {
-	
-	@Autowired private ICuentaBancaria cuentaRepo;
-	
+
+	@Autowired
+	private ICuentaBancaria cuentaRepo;
+
 	@Transactional
 	public CuentaBancaria RegisterCuentaBancaria(CuentaBancaria cuenta) {
 		return cuentaRepo.save(cuenta);
 	}
-	
+
 	@Transactional(readOnly = true)
-	public List<CuentaBancaria> GetUserAccounts(Usuario user){
-		return null;
+	public List<CuentaBancaria> GetUserAccounts(Long UserID) {
+		return cuentaRepo.userAccounts(UserID);
 	}
-	
+
 }

@@ -12,16 +12,32 @@ import javax.validation.constraints.NotBlank;
 
 @Entity
 @Table(name = "banco")
-public class Banco implements Serializable{
+public class Banco implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "institucion", unique = true)
 	@NotBlank
 	private String institucion;
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getInstitucion() {
+		return institucion;
+	}
+
+	public void setInstitucion(String institucion) {
+		this.institucion = institucion;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 }
