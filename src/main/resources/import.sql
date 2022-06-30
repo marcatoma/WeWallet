@@ -19,5 +19,5 @@ insert into tipo_transaccion (signo, tipo_trans) values ('-', 'DEBITO');
 insert into tipo_transaccion (signo, tipo_trans) values ('+', 'GIRO');
 insert into tipo_transaccion (signo, tipo_trans) values ('-', 'RECARGA');
 
-insert into transaccion (concepto, monto, cuenta_bancaria_id, tipo_trans_id, usuario_id) values ('giro al ecuador', 500.00, 1, 4, 2);
+insert into transaccion (concepto, monto, cuenta_bancaria_id, tipo_trans_id, usuario_id, created_at, updated_at) values ('giro al ecuador', 500.00, 1, 4, 2, '2022-06-30','2022-06-30');
 
