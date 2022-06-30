@@ -27,7 +27,7 @@ public class TipoTransaccion implements Serializable {
 	@NotEmpty(message = "El valor no puede estar vacío.")
 	@Enumerated(EnumType.STRING)
 	private ETipoTrans tipoTrans;
-	
+
 	@Column(name = "signo")
 	private String signo;
 
@@ -47,7 +47,13 @@ public class TipoTransaccion implements Serializable {
 		this.tipoTrans = tipoTrans;
 	}
 
+	public String getSigno() {
+		return signo;
+	}
 
+	public void setSigno(String signo) {
+		this.signo = signo;
+	}
 
 	private static final long serialVersionUID = 1L;
 
