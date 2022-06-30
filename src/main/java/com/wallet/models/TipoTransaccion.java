@@ -2,13 +2,18 @@ package com.wallet.models;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+
+import com.wallet.enums.ETipoTrans;
 
 @Entity
 @Table(name = "tipo_transaccion")
@@ -20,7 +25,11 @@ public class TipoTransaccion implements Serializable {
 
 	@NotNull(message = "El valor no puede ser nulo.")
 	@NotEmpty(message = "El valor no puede estar vacío.")
-	private String tipoTrans;
+	@Enumerated(EnumType.STRING)
+	private ETipoTrans tipoTrans;
+	
+	@Column(name = "signo")
+	private String signo;
 
 	public Long getId() {
 		return id;
@@ -30,13 +39,15 @@ public class TipoTransaccion implements Serializable {
 		this.id = id;
 	}
 
-	public String getTipoTrans() {
+	public ETipoTrans getTipoTrans() {
 		return tipoTrans;
 	}
 
-	public void setTipoTrans(String tipoTrans) {
+	public void setTipoTrans(ETipoTrans tipoTrans) {
 		this.tipoTrans = tipoTrans;
 	}
+
+
 
 	private static final long serialVersionUID = 1L;
 

@@ -24,6 +24,8 @@ public class CuentaBancariaController {
 
 	@Autowired
 	CuentaBancariaService cuentaService;
+	
+	
 
 	@GetMapping("useraccounts/{userid}")
 	public ResponseEntity<?> ObtenerCuentasBancariasUsuario(@PathVariable long userid) {
@@ -32,7 +34,7 @@ public class CuentaBancariaController {
 		try {
 			List<CuentaBancaria> lcb = cuentaService.GetUserAccounts(userid);
 			response.put("mensaje", "lista de cuentas de usuario obtenidas");
-			response.put("content", lcb);
+			response.put("result", lcb);
 		} catch (DataAccessException e) {
 			response.put("mensaje", e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);

@@ -13,8 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "transaccion")
@@ -24,22 +26,32 @@ public class Transaccion implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tipo_trans_id")
 	private TipoTransaccion tipoTrans;
+	
+	@Column(name = "concepto")
+	private String concepto;
+	
+	@Column(name = "monto")
+	private Double monto;
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler", "password", "username" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "usuario_id")
 	private Usuario usuario;
 
-	@CreatedDate
+	@CreationTimestamp
 	@Column(name = "created_at")
 	private Date createdAt;
 
-	@LastModifiedDate
+	//@LastModifiedDate
+	@UpdateTimestamp
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cuenta_bancaria_id")
 	private CuentaBancaria cuentaBancaria;
@@ -50,6 +62,14 @@ public class Transaccion implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Double getMonto() {
+		return monto;
+	}
+
+	public void setMonto(Double monto) {
+		this.monto = monto;
 	}
 
 	public TipoTransaccion getTipoTrans() {
@@ -66,6 +86,14 @@ public class Transaccion implements Serializable {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
+	}
+
+	public String getConcepto() {
+		return concepto;
+	}
+
+	public void setConcepto(String concepto) {
+		this.concepto = concepto;
 	}
 
 	public Date getCreatedAt() {

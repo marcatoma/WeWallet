@@ -39,6 +39,12 @@ public class CuentaBancaria implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "banco_id")
 	private Banco banco;
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "tipo_cuenta_id")
+	private TipoCuenta tipoCuenta;
+	
 
 	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "cuenta_usuario")
@@ -90,6 +96,14 @@ public class CuentaBancaria implements Serializable {
 
 	public void setUsuario(List<Usuario> usuario) {
 		this.usuario = usuario;
+	}
+
+	public TipoCuenta getTipoCuenta() {
+		return tipoCuenta;
+	}
+
+	public void setTipoCuenta(TipoCuenta tipoCuenta) {
+		this.tipoCuenta = tipoCuenta;
 	}
 
 	private static final long serialVersionUID = 1L;
