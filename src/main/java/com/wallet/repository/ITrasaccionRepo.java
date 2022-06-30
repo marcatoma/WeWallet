@@ -12,6 +12,6 @@ import com.wallet.models.Transaccion;
 @Repository
 public interface ITrasaccionRepo extends JpaRepository<Transaccion, Long> {
 
-	@Query(value = "FROM tipo_transaccion", nativeQuery = true)
+	@Query(value = "from TipoTransaccion")
 	public List<TipoTransaccion> findAllTransactions();
 }
