@@ -6,8 +6,8 @@ insert into banco (institucion) values ('Cooperativa JEP');
 insert into tipo_cuenta (tipo) values ('AHORROS');
 insert into tipo_cuenta (tipo) values ('CORRIENTE');
 
-insert into cuenta_bancaria (monto_credito, monto_efectivo, numero_cuenta, tipo_cuenta_id, banco_id) values (0.0, 0.86, '789456123',1 ,1);
-insert into cuenta_bancaria (monto_credito, monto_efectivo, numero_cuenta, tipo_cuenta_id, banco_id) values (0.0, 0.0, '789456123025',1 ,2);
+insert into cuenta_bancaria (monto_credito, monto_efectivo, numero_cuenta, tipo_cuenta_id, banco_id) values (0.0, 1599.80, '789456123',1 ,1);
+insert into cuenta_bancaria (monto_credito, monto_efectivo, numero_cuenta, tipo_cuenta_id, banco_id) values (0.0, 10500.99, '789456123025',1 ,2);
 
 insert into cuenta_bancaria_usuario (cuenta_bancaria_id, usuario_id) values(1,1);
 insert into cuenta_bancaria_usuario (cuenta_bancaria_id, usuario_id) values(2,1);
