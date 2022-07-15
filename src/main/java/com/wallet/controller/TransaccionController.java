@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.wallet.models.TipoTransaccion;
 import com.wallet.models.Transaccion;
+import com.wallet.service.TipoTransaccionService;
 import com.wallet.service.TransaccionService;
 
 @RestController
@@ -25,6 +26,7 @@ import com.wallet.service.TransaccionService;
 public class TransaccionController {
 
 	@Autowired private TransaccionService transService;
+	@Autowired private TipoTransaccionService tipoTransService;
 	
 	@PostMapping("new-trans")
 	public ResponseEntity<?> RegistrarTransaccion(@RequestBody Transaccion transaccion){
@@ -33,6 +35,21 @@ public class TransaccionController {
 		try {
 			transService.SaveTrans(transaccion);
 			response.put("mensaje", "Transaccion exitosa.");
+		} catch (DataAccessException e) {
+			response.put("mensaje", e.getMostSpecificCause().getMessage());
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
+		
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+	}
+	
+	@PostMapping("new-type-trans")
+	public ResponseEntity<?> RegistrarTipoTransaccion(@RequestBody TipoTransaccion tipoTrans){
+		Map<String, Object> response=new HashMap<>();
+		
+		try {
+			tipoTransService.SaveTypeTrans(tipoTrans);
+			response.put("mensaje", "Tipo de transaccion registrada.");
 		} catch (DataAccessException e) {
 			response.put("mensaje", e.getMostSpecificCause().getMessage());
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);

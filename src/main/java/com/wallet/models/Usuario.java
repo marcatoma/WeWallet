@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -22,6 +23,11 @@ public class Usuario implements Serializable {
 	@NotEmpty(message = "Ingresar el nombre de usuario.")
 	@Column(unique = true)
 	private String username;
+	
+	@NotEmpty(message = "Ingresar el correo.")
+	@Email(message = "El formato de email es incorrecto.")
+	@Column(unique = true)
+	private String email;
 
 	@NotNull(message = "Ingresar la contraseña.")
 	private String password;
@@ -51,6 +57,14 @@ public class Usuario implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getNombre() {
