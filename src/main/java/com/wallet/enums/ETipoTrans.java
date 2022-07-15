@@ -1,5 +1,5 @@
 package com.wallet.enums;
 
 public enum ETipoTrans {
-	PAGO, DEPOSITO, DEBITO, GIRO, RECARGA
+	PAGO, DEPOSITO, DEBITO, GIRO, RECARGA, PRESTAMO
 }
