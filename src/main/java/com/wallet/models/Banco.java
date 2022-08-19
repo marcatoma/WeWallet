@@ -22,6 +22,8 @@ public class Banco implements Serializable {
 	@NotBlank
 	private String institucion;
 
+	private String imagen;
+
 	public Long getId() {
 		return id;
 	}
@@ -36,6 +38,14 @@ public class Banco implements Serializable {
 
 	public void setInstitucion(String institucion) {
 		this.institucion = institucion;
+	}
+
+	public String getImagen() {
+		return imagen;
+	}
+
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	private static final long serialVersionUID = 1L;
