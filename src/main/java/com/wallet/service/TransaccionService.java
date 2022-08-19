@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.wallet.models.CuentaBancaria;
 import com.wallet.models.TipoTransaccion;
 import com.wallet.models.Transaccion;
 import com.wallet.repository.ITrasaccionRepo;
@@ -25,9 +26,14 @@ public class TransaccionService {
 	public List<Transaccion> FindAllTrans() {
 		return transRepo.findAll();
 	}
-	
+
 	@Transactional(readOnly = true)
-	public List<TipoTransaccion> FindAllTypeTransactions(){
+	public List<Transaccion> FindAllTransByAccount(CuentaBancaria cuenta) {
+		return transRepo.findByCuentaBancaria(cuenta);
+	}
+
+	@Transactional(readOnly = true)
+	public List<TipoTransaccion> FindAllTypeTransactions() {
 		return transRepo.findAllTransactions();
 	}
 

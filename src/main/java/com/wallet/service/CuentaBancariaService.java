@@ -21,6 +21,11 @@ public class CuentaBancariaService {
 	}
 
 	@Transactional(readOnly = true)
+	public CuentaBancaria GetAccountById(Long id) {
+		return cuentaRepo.findById(id).orElse(null);
+	}
+	
+	@Transactional(readOnly = true)
 	public List<CuentaBancaria> GetUserAccounts(Long UserID) {
 		return cuentaRepo.userAccounts(UserID);
 	}
