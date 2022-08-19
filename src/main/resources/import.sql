@@ -1,7 +1,7 @@
 insert into usuario(nombre, password, username, email) values('Christian Marcatoma','chris', 'chrisadr', 'marcatoma99@gmail.com');
 insert into usuario(nombre, password, username, email) values('Lourdes Espinoza','adri', 'luluadr', 'lourdesespinoza@gmail.com');
-insert into banco (institucion) values ('Banco del Austro');
-insert into banco (institucion) values ('Cooperativa JEP');
+insert into banco (institucion, imagen) values ('Banco del Austro', 'jep.png');
+insert into banco (institucion, imagen) values ('Cooperativa JEP', 'austro.png');
 
 insert into tipo_cuenta (tipo) values ('AHORROS');
 insert into tipo_cuenta (tipo) values ('CORRIENTE');
