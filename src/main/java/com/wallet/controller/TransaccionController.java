@@ -40,6 +40,9 @@ public class TransaccionController {
 		Map<String, Object> response = new HashMap<>();
 
 		try {
+			// obtener cuenta bancaria con el saldo total
+			CuentaBancaria cuentaBancaria=cuentaBancariaService.GetAccountById(transaccion.getCuentaBancaria().getId());
+			
 			transService.SaveTrans(transaccion);
 			response.put("mensaje", "Transaccion exitosa.");
 		} catch (DataAccessException e) {

@@ -30,10 +30,15 @@ public class Transaccion implements Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tipo_trans_id")
 	private TipoTransaccion tipoTrans;
-	
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonIgnoreProperties(value = { "hibernateLazyInitializer", "handler", "transacciones" }, allowSetters = true)
+	@JoinColumn(name = "credito_id")
+	private Credito credito;
+
 	@Column(name = "concepto")
 	private String concepto;
-	
+
 	@Column(name = "monto")
 	private Double monto;
 
@@ -46,7 +51,7 @@ public class Transaccion implements Serializable {
 	@Column(name = "created_at")
 	private Date createdAt;
 
-	//@LastModifiedDate
+	// @LastModifiedDate
 	@UpdateTimestamp
 	@Column(name = "updated_at")
 	private Date updatedAt;
@@ -118,6 +123,14 @@ public class Transaccion implements Serializable {
 
 	public void setCuentaBancaria(CuentaBancaria cuentaBancaria) {
 		this.cuentaBancaria = cuentaBancaria;
+	}
+
+	public Credito getCredito() {
+		return credito;
+	}
+
+	public void setCredito(Credito credito) {
+		this.credito = credito;
 	}
 
 	private static final long serialVersionUID = 1L;
